@@ -9,11 +9,11 @@
 </h2>
 
 <p align="center">
-  <img alt="linguagens mais usadas" src="https://img.shields.io/github/languages/count/hercules1997/salao-leila-interface?color=9E775A">
-   <img alt="Tamanho do aquivo no repo" src="https://img.shields.io/github/repo-size/hercules1997/salao-leila-interface?color=9E775A">
-  <img alt="Commit recente no GitHub" src="https://img.shields.io/github/last-commit/hercules1997/salao-leila-interface?color=9E775A">
+  <img alt="linguagens mais usadas" src="https://img.shields.io/github/languages/count/hercules1997/api-salao-leila?color=9E775A">
+   <img alt="Tamanho do aquivo no repo" src="https://img.shields.io/github/repo-size/hercules1997/api-salao-leila?color=9E775A">
+  <img alt="Commit recente no GitHub" src="https://img.shields.io/github/last-commit/hercules1997/api-salao-leila?color=9E775A">
   <img alt="Feito por Hércules" src="https://img.shields.io/badge/made%20by-hercules1997-%20?color=9E775A">
-  <img alt="Project top programing language" src="https://img.shields.io/github/languages/top/hercules1997/salao-leila-interface?color=9E775A">
+  <img alt="Project top programing language" src="https://img.shields.io/github/languages/top/hercules1997/api-salao-leila?color=9E775A">
 </p> 
 
 <p align="center">
