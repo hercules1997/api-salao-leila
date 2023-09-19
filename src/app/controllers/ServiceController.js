@@ -78,7 +78,7 @@ class ServiceController {
         url: {
           type: Sequelize.VIRTUAL,
           get() {
-            return `http://localhost:3001/service-file/${this.path}`
+            return `https://api-salao-leila-production.up.railway.app/service-file/${this.path}`
           },
         },
       })
