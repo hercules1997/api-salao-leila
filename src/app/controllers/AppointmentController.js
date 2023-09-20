@@ -13,17 +13,12 @@ class AppointmentController {
           .of(
             Yup.object().shape({
               id: Yup.number().required(),
-              time: Yup.number().required(),
+              date: Yup.string().required(),
+              time: Yup.string().required(),
             })
           ),
       })
-    } catch (error) {
-      return response.status(400).json({
-        error: err.errors,
-      })
-    }
 
-    try {
       await schema.validateSync(request.body, {
         abortEarly: false,
       })
@@ -57,8 +52,10 @@ class AppointmentController {
         id: service.id,
         name: service.name,
         price: service.price,
+        decription: service.decription,
         category: service.category.name,
         url: service.url,
+        date: request.body.services[serviceIndex].date,
         time: request.body.services[serviceIndex].time,
       }
       return newService
@@ -71,8 +68,7 @@ class AppointmentController {
       },
       services: editedServices,
       status: "Agendamento realizado com sucesso!",
-      date: 435,
-      hours: 345,
+
     }
 
     const appointmentResponse = await ApointmentSchema.create(appointment)
@@ -93,12 +89,12 @@ class AppointmentController {
         .of(
           Yup.object().shape({
             id: Yup.number(),
-            time: Yup.number(),
+            date: Yup.string(),
+            time: Yup.string(),
           })
         ),
       status: Yup.string().required(),
-      date: Yup.number().required(),
-      hours: Yup.number().required(),
+
     })
 
     try {
@@ -118,8 +114,7 @@ class AppointmentController {
 
     const { id } = request.params
     const { status } = request.body
-    const { date } = request.body
-    const { hours } = request.body
+
 
     try {
       await ApointmentSchema.updateOne(
@@ -128,8 +123,6 @@ class AppointmentController {
         },
         {
           status,
-          date,
-          hours,
         }
       )
     } catch (error) {

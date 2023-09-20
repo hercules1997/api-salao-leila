@@ -19,13 +19,13 @@ class CategoryController {
         })
       }
 
-      // const { admin: isAdmin } = await User.findByPk(request.userId)
+       const { admin: isAdmin } = await User.findByPk(request.userId)
 
-      // if (!isAdmin) {
-      //   return response.status(401).json({
-      //     message: "Não autorizado",
-      //   })
-      // }
+       if (!isAdmin) {
+         return response.status(401).json({
+           message: "Não autorizado",
+         })
+       }
 
       const { name } = request.body
 
@@ -76,13 +76,13 @@ class CategoryController {
         })
       }
 
-      // const { admin: isAdmin } = await User.findByPk(request.userId)
+       const { admin: isAdmin } = await User.findByPk(request.userId)
 
-      // if (!isAdmin) {
-      //   return response.status(401).json({
-      //     message: "Usuario NÃO autorizado",
-      //   })
-      // }
+       if (!isAdmin) {
+         return response.status(401).json({
+           message: "Usuario NÃO autorizado",
+         })
+       }
 
       const { name } = request.body
       const { id } = request.params

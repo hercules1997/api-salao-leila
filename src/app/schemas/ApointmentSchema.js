@@ -38,22 +38,18 @@ const ApointmentSchema = new mongoose.Schema(
           type: String,
           required: true,
         },
+        date: {
+          type: String,
+          required: true,
+        },
         time: {
-          type: Number,
+          type: String,
           required: true,
         },
       },
     ],
     status: {
       type: String,
-      required: true,
-    },
-    date: {
-      type: Number,
-      required: true,
-    },
-    hours: {
-      type: Number,
       required: true,
     },
   },

@@ -28,7 +28,7 @@ routes.post("/sessions", SessionController.store)
 /*
  AUTENTICAÇÃO COM JWT (TODAS AS ROTAS EMBAIXO DEPENDE DESSA AUTENTICAÇÃO)
  */
-// routes.use(authMiddleware)
+ routes.use(authMiddleware)
 
 /*
  ROTAS DOS SERVIÇOS
