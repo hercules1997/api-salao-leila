@@ -1,5 +1,7 @@
 "use strict"
+// * MIGRATION PARA CRIAÇÃO DA TABELA DE USUÁRIOS */ 
 
+// * FUNÇÃO DE CRIAÇÃO
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("Users", {
@@ -21,7 +23,7 @@ module.exports = {
         unique: true,
       },
       phone: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
         unique: true,
       },
@@ -44,7 +46,7 @@ module.exports = {
       },
     })
   },
-
+//* FUNÇÃO PARA DELETAR A TABELA
   async down(queryInterface) {
     await queryInterface.dropTable("Users")
   },

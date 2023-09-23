@@ -1,6 +1,7 @@
 import Sequelize, { Model } from "sequelize"
 
 import bcrypt from "bcrypt"
+// * MODEL PARA GRAVAÇÃO DOS DADOS NA TABELA DE USUÁRIOS USANDO O SEQUELIZE PARA COMPILAÇÃO */
 
 class User extends Model {
   static init(sequelize) {
@@ -8,7 +9,7 @@ class User extends Model {
       {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
-        phone: Sequelize.INTEGER,
+        phone: Sequelize.INTEGER.UNSIGNED,
         password: Sequelize.VIRTUAL,
         password_hash: Sequelize.STRING,
         admin: Sequelize.BOOLEAN,

@@ -1,4 +1,5 @@
 import Sequelize, { Model } from "sequelize"
+// * MODEL PARA GRAVAÇÃO DOS DADOS NA TABELA DE CATEGORIAS USANDO O SEQUELIZE PARA COMPILAÇÃO */
 
 class Category extends Model {
   static init(sequelize) {
@@ -19,8 +20,6 @@ class Category extends Model {
     )
     return this
   }
-
-
 }
 
 export default Category

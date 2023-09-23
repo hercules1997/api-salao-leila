@@ -1,12 +1,13 @@
 import jwt from "jsonwebtoken"
 import authConfig from "../../config/auth"
 
+// * VALIDAÇÃO DO TOKEN DE AUTENTICAÇÃO */
 export default (request, response, next) => {
   const authToken = request.headers.authorization
 
   if (!authToken) {
     return response.status(401).json({
-      error: "Token not provided",
+      error: "TOKEN NÃO FORNECIDO",
     })
   }
 
@@ -17,7 +18,6 @@ export default (request, response, next) => {
       if (err) {
         throw new Error()
       }
-
       request.userId = decoded.id
       request.userName = decoded.name
 
@@ -25,7 +25,7 @@ export default (request, response, next) => {
     })
   } catch (err) {
     return response.status(401).json({
-      error: "token is invalid",
+      error: "TOKEN É INVÁLIDO",
     })
   }
 }

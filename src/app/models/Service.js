@@ -1,4 +1,7 @@
 import Sequelize, { Model } from "sequelize"
+
+// * MODEL PARA GRAVAÇÃO DOS DADOS NA TABELA DE SERVIÇOS USANDO O SEQUELIZE PARA A COMPILAÇÃO */
+
 class Service extends Model {
   static init(sequelize) {
     super.init(
@@ -21,14 +24,14 @@ class Service extends Model {
     )
     return this
   }
+  // * ASSOCIAÇÃO DA TABELA  */
 
-   static associate(models) {
+  static associate(models) {
     this.belongsTo(models.Category, {
-       foreignKey: "category_id",
-       as: "category",
-     })
+      foreignKey: "category_id",
+      as: "category",
+    })
   }
 }
-
 
 export default Service

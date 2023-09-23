@@ -1,4 +1,5 @@
 "use strict"
+// * MIGRATION PARA CRIAÇÃO DE COLUNA DE OFERTAS NA TABELA DE SERVIÇOS */ 
 
 module.exports = {
   async up(queryInterface, Sequelize) {

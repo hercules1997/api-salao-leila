@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+// * SECHEMA  PARA CRIAÇÃO DA TABELA DE APPOINTMENT NO MONGODB */
 
 const ApointmentSchema = new mongoose.Schema(
   {

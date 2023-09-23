@@ -1,11 +1,10 @@
 import express from "express"
 import routes from "./routes"
-import {
-  resolve
-} from "path"
-import cors from 'cors'
+import { resolve } from "path"
+import cors from "cors"
 
 import "./database"
+// * CLASSE QUE INSTÂNCIA A APLICAÇÃO DANDO A INICIALIZAÇÃO */
 
 class App {
   constructor() {
@@ -14,7 +13,6 @@ class App {
 
     this.middlewares()
     this.routes()
-
   }
 
   middlewares() {

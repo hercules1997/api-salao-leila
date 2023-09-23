@@ -1,4 +1,5 @@
 import app from "./app"
+// * CONFIGURAÇÃO PARA O SERVIDOR  */
 
 const port = process.env.PORT || 3001;
 

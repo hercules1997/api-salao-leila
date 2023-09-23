@@ -6,6 +6,9 @@ import { Sequelize } from "sequelize"
 import Service from "../models/Service"
 
 const sequelize = database.connection
+
+// * CONTOLLER PARA AS REQUISIÇÕES, INFORMAÇÕES DA ROTA DE SERVIÇOS */
+
 class ServiceController {
   async store(request, response) {
     try {
@@ -27,13 +30,14 @@ class ServiceController {
         })
       }
 
-       const { admin: isAdmin } = await User.findByPk(request.userId)
+      const { admin: isAdmin } = await User.findByPk(request.userId)
+      // * VERIFICAÇÃO DE ADMINISTRADOR */
 
-       if (!isAdmin) {
-         return response.status(401).json({
-           message: "Não autorizado",
-         })
-       }
+      if (!isAdmin) {
+        return response.status(401).json({
+          message: "Não autorizado",
+        })
+      }
 
       const { filename: path } = request.file
       const { name, price, decription, category_id, offer } = request.body

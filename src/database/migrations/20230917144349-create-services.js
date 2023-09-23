@@ -1,4 +1,5 @@
 "use strict"
+// * MIGRATION PARA CRIAÇÃO DA TABELA DE SERVIÇOS */ 
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {

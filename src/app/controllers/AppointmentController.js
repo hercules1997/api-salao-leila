@@ -3,6 +3,7 @@ import Category from "../models/Category"
 import ApointmentSchema from "../schemas/ApointmentSchema"
 import Service from "../models/Service"
 import User from "../models/User"
+// * CONTOLLER PARA AS REQUISIÇÕES, INFORMAÇÕES DA ROTA DO AGENDAMENTO */
 
 class AppointmentController {
   async store(request, response) {
@@ -68,7 +69,6 @@ class AppointmentController {
       },
       services: editedServices,
       status: "Agendamento realizado com sucesso!",
-
     }
 
     const appointmentResponse = await ApointmentSchema.create(appointment)
@@ -94,7 +94,6 @@ class AppointmentController {
           })
         ),
       status: Yup.string().required(),
-
     })
 
     try {
@@ -114,7 +113,6 @@ class AppointmentController {
 
     const { id } = request.params
     const { status } = request.body
-
 
     try {
       await ApointmentSchema.updateOne(

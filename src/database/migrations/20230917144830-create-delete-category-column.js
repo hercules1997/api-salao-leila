@@ -1,4 +1,5 @@
 "use strict"
+// * MIGRATION PARA REMOVER COLUNA DA TABELA DE SERVIÇOS */ 
 
 module.exports = {
   async up(queryInterface, Sequelize) {

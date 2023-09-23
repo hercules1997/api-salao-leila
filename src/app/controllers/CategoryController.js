@@ -1,6 +1,7 @@
 import * as Yup from "yup"
 import Category from "../models/Category"
 import User from "../models/User"
+// * CONTOLLER PARA AS REQUISIÇÕES, INFORMAÇÕES DA ROTA DE CATEGORIAS */
 
 class CategoryController {
   async store(request, response) {

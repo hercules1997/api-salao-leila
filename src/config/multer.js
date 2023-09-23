@@ -1,6 +1,7 @@
 import multer from "multer"
 import { v4 } from "uuid"
 import { extname, resolve } from "path"
+// * CONFIGURAÇÃO PARA DESTINO DAS IMAGENS */
 
 export default {
   storage: multer.diskStorage({

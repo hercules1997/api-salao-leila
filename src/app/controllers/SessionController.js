@@ -2,6 +2,7 @@ import * as Yup from "yup"
 import jwt from "jsonwebtoken"
 import User from "../models/User"
 import authConfig from "../../config/auth"
+// * CONTOLLER PARA AS REQUISIÇÕES, INFORMAÇÕES DA ROTA DE LOGIN */
 
 class SessionController {
   async store(request, response) {
@@ -12,11 +13,12 @@ class SessionController {
       })
 
       const useEmailOrPasswordIncorret = () => {
-       alert("Usuario e senha não estão corretos")
+        alert("Usuario e senha não estão corretos")
         return response.status(401).json({
           error: "Usuario e senha não estão corretos",
         })
       }
+      // * VERIFICAÇÃO DAS INFORMAÇÕES SE SÃO VÁLIDAS */
 
       if (!(await schema.isValid(request.body))) useEmailOrPasswordIncorret()
 
@@ -26,7 +28,6 @@ class SessionController {
           email,
         },
       })
-
 
       if (!user) useEmailOrPasswordIncorret()
       if (!(await user.checkPassword(password))) useEmailOrPasswordIncorret()

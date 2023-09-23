@@ -1,4 +1,5 @@
 "use strict"
+// * MIGRATION PARA CRIAÇÃO DE UMA COLUNA NA TABELA DE SERVIÇOS DADO UM ID DA CATEGORIA */ 
 
 module.exports = {
   async up(queryInterface, Sequelize) {

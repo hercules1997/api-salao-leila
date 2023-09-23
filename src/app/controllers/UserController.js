@@ -2,17 +2,20 @@ import { v4 } from "uuid"
 import * as Yup from "yup"
 
 import User from "../models/User"
-
+// * CONTOLLER PARA AS REQUISIÇÕES, INFORMAÇÕES DA ROTA DE USUÁRIO */
 class UserController {
   async store(request, response) {
     try {
       const schema = Yup.object().shape({
         name: Yup.string().required(),
         email: Yup.string().email().required(),
-        phone: Yup.number().required(),
+        phone: Yup.string().required(),
         password: Yup.string().required().min(6),
         admin: Yup.boolean(),
       })
+
+      // * VERIFICAÇÃO DAS INFORMAÇÕES SE SÃO VÁLIDAS */
+
       if (!(await schema.isValid(request.body))) {
         return response.status(400).json({ error: "não está correto" })
       }

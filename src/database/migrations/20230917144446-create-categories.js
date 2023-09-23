@@ -1,4 +1,5 @@
 "use strict"
+// * MIGRATION PARA CRIAÇÃO DA TABELA DE CATEGORIAS */ 
 
 module.exports = {
   async up(queryInterface, Sequelize) {
