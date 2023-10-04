@@ -73,7 +73,7 @@ class ServiceController {
 
   async delete(request, response) {
     try {
-      const Item = sequelize.define("services", {
+      const Item = sequelize.define("Services", {
         name: Sequelize.STRING,
         price: Sequelize.REAL,
         decription: Sequelize.STRING,
@@ -82,7 +82,7 @@ class ServiceController {
         url: {
           type: Sequelize.VIRTUAL,
           get() {
-            return `http://api-salao-leila-production.up.railway.app/service-file/${this.path}`
+            return `https://api-salao-leila-production.up.railway.app/service-file/${this.path}`
           },
         },
       })

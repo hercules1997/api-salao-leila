@@ -7,14 +7,14 @@ class Service extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        price: Sequelize.INTEGER,
+        price: Sequelize.DECIMAL,
         decription: Sequelize.STRING,
         path: Sequelize.STRING,
         offer: Sequelize.BOOLEAN,
         url: {
           type: Sequelize.VIRTUAL,
           get() {
-            return `http://api-salao-leila-production.up.railway.app/service-file/${this.path}`
+            return `https://api-salao-leila-production.up.railway.app/service-file/${this.path}`
           },
         },
       },
