@@ -1,8 +1,11 @@
 import * as Yup from "yup"
 import Category from "../models/Category"
 import User from "../models/User"
+import database from "../../database"
+import { Sequelize } from "sequelize"
 // * CONTOLLER PARA AS REQUISIÇÕES, INFORMAÇÕES DA ROTA DE CATEGORIAS */
 
+const sequelize = database.connection
 class CategoryController {
   async store(request, response) {
     try {
@@ -20,16 +23,16 @@ class CategoryController {
         })
       }
 
-       const { admin: isAdmin } = await User.findByPk(request.userId)
+      const { admin: isAdmin } = await User.findByPk(request.userId)
 
-       if (!isAdmin) {
-         return response.status(401).json({
-           message: "Não autorizado",
-         })
-       }
+      if (!isAdmin) {
+        return response.status(401).json({
+          message: "Não autorizado",
+        })
+      }
 
       const { name } = request.body
-
+      const { filename: path } = request.file
       const categoryExists = await Category.findOne({
         where: {
           name,
@@ -44,10 +47,12 @@ class CategoryController {
 
       const { id } = await Category.create({
         name,
+        path,
       })
 
       return response.json({
         name,
+        path,
         id,
       })
     } catch (err) {
@@ -73,17 +78,16 @@ class CategoryController {
       } catch (err) {
         return response.status(400).json({
           error: err.errors,
-          
         })
       }
 
-       const { admin: isAdmin } = await User.findByPk(request.userId)
+      const { admin: isAdmin } = await User.findByPk(request.userId)
 
-       if (!isAdmin) {
-         return response.status(401).json({
-           message: "Usuario NÃO autorizado",
-         })
-       }
+      if (!isAdmin) {
+        return response.status(401).json({
+          message: "Usuario NÃO autorizado",
+        })
+      }
 
       const { name } = request.body
       const { id } = request.params
@@ -112,6 +116,31 @@ class CategoryController {
         message: "Alterado com sucesso!",
       })
     } catch (err) {
+      console.log(err)
+    }
+  }
+
+  async delete(request, response) {
+    try {
+      const Item = sequelize.define("Categories", {
+        name: Sequelize.STRING,
+        url: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return `https://api-salao-leila-production.up.railway.app/service-file/${this.path}`
+          },
+        },
+      })
+
+      const { id } = request.params
+      const categoryId = await Category.findByPk(id)
+      console.log(categoryId)
+
+      Item.destroy({ where: { id: categoryId.dataValues.id } })
+      return response
+        .status(200)
+        .json({ message: "Contato deletado com sucesso!" })
+    } catch (error) {
       console.log(err)
     }
   }
