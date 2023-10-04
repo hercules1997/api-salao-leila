@@ -14,10 +14,10 @@ class AppointmentController {
           .of(
             Yup.object().shape({
               id: Yup.number().required(),
-              date: Yup.string().required(),
-              time: Yup.string().required(),
             })
           ),
+        date: Yup.string().required(),
+        time: Yup.string().required(),
       })
 
       await schema.validateSync(request.body, {
@@ -45,10 +45,6 @@ class AppointmentController {
     })
 
     const editedServices = updatedServices.map((service) => {
-      const serviceIndex = request.body.services.findIndex(
-        (requestService) => requestService.id === service.id
-      )
-
       const newService = {
         id: service.id,
         name: service.name,
@@ -56,8 +52,6 @@ class AppointmentController {
         decription: service.decription,
         category: service.category.name,
         url: service.url,
-        date: request.body.services[serviceIndex].date,
-        time: request.body.services[serviceIndex].time,
       }
       return newService
     })
@@ -69,6 +63,8 @@ class AppointmentController {
       },
       services: editedServices,
       status: "Agendamento realizado com sucesso!",
+      date: request.body.date,
+      time: request.body.time,
     }
 
     const appointmentResponse = await ApointmentSchema.create(appointment)
@@ -89,11 +85,11 @@ class AppointmentController {
         .of(
           Yup.object().shape({
             id: Yup.number(),
-            date: Yup.string(),
-            time: Yup.string(),
           })
         ),
-      status: Yup.string().required(),
+      status: Yup.string(),
+      date: Yup.string(),
+      time: Yup.string(),
     })
 
     try {
@@ -112,7 +108,7 @@ class AppointmentController {
     }
 
     const { id } = request.params
-    const { status } = request.body
+    const { date, time, status } = request.body
 
     try {
       await ApointmentSchema.updateOne(
@@ -120,6 +116,8 @@ class AppointmentController {
           _id: id,
         },
         {
+          date,
+          time,
           status,
         }
       )
